@@ -17,6 +17,10 @@ const usersReducer = (state, action) => {
         }
         return user;
       });
+      case "add_user":
+        const username = prompt('enter new username:')
+        const id = state.length + 1
+        return state.concat({id, username})
     default:
       throw new Error("YALNIS!!!!!!!");
   }
