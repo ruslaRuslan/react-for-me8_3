@@ -9,8 +9,16 @@ const usersReducer = (state, action) => {
       return action.payload;
     case "remove_user":
       return state.filter((user) => user.id !== action.payload);
-      default:
-        throw new Error('YALNIS!!!!!!!')
+    case "edit_user":
+      const newUsername = prompt("enter new user name:");
+      return state.map((user) => {
+        if (user.id === action.payload) {
+          return { ...user, username: newUsername };
+        }
+        return user;
+      });
+    default:
+      throw new Error("YALNIS!!!!!!!");
   }
 };
 
@@ -37,7 +45,13 @@ const UsersWithReducer = ({}) => {
               >
                 х
               </button>{" "}
-              <button></button>
+              <button
+                onClick={() =>
+                  dispatch({ type: "edit_user", payload: user.id })
+                }
+              >
+                edit
+              </button>
             </p>
           </div>
         );
