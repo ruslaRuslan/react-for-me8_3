@@ -4,11 +4,13 @@ import { useEffect, useReducer } from "react";
 const url = "https://jsonplaceholder.typicode.com/users/";
 
 const usersReducer = (state, action) => {
-  if (action.type === "get_users") {
-    return action.payload;
-  } else if (action.type === "remove_user") {
-    
-    return state.filter((user) => user.id !== action.payload);
+  switch (action.type) {
+    case "get_users":
+      return action.payload;
+    case "remove_user":
+      return state.filter((user) => user.id !== action.payload);
+      default:
+        throw new Error('YALNIS!!!!!!!')
   }
 };
 
