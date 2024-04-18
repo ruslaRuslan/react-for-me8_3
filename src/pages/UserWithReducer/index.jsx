@@ -5,10 +5,10 @@ const url = "https://jsonplaceholder.typicode.com/users/";
 
 const usersReducer = (state, action) => {
   if (action.type === "get_users") {
-    return action.payload
-  }else if(action.type === 'remove_user'){
-const newState = state.filter((user)=> user.id !== action.payload)
-return newState
+    return action.payload;
+  } else if (action.type === "remove_user") {
+    
+    return state.filter((user) => user.id !== action.payload);
   }
 };
 
@@ -21,24 +21,26 @@ const UsersWithReducer = ({}) => {
     });
   }, []);
 
-  return(
-
+  return (
     <>
-    
-    {
-        
-        state.map((user)=>{
-return <div key={user.id}>
-<p>{user.username} <button onClick={()=>dispatch({type: "remove_user", payload: user.id})}>х</button> </p>
-
-</div>
-        })
-        
-    }
-    
+      {state.map((user) => {
+        return (
+          <div key={user.id}>
+            <p>
+              {user.username}{" "}
+              <button
+                onClick={() =>
+                  dispatch({ type: "remove_user", payload: user.id })
+                }
+              >
+                х
+              </button>{" "}
+            </p>
+          </div>
+        );
+      })}
     </>
-
-  )
+  );
 };
 
 export default UsersWithReducer;
