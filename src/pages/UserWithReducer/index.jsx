@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useReducer } from "react";
-
+import {v4 as genId} from "uuid"
 const url = "https://jsonplaceholder.typicode.com/users/";
 
 const usersReducer = (state, action) => {
@@ -19,8 +19,10 @@ const usersReducer = (state, action) => {
       });
       case "add_user":
         const username = prompt('enter new username:')
-        const id = state.length + 1
+        const id = genId()
         return state.concat({id, username})
+        case 'remove_first' :
+          return state.slice(1)
     default:
       throw new Error("YALNIS!!!!!!!");
   }
@@ -40,7 +42,14 @@ const UsersWithReducer = ({}) => {
     <button onClick={()=>{
       dispatch({type:'add_user'})
     }}>add user</button>
-      {state.map((user) => {
+    
+    <button onClick={()=>{
+      dispatch({type:'remove_first'})
+    }}>remove first user</button>
+
+      {
+      
+      state.map((user) => {
         return (
           <div key={user.id}>
             <p>
