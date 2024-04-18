@@ -9,7 +9,7 @@ const counterReducer = (count, action) => {
     case "reset":
       return count - count;
     case "special":
-      const newEd = prompt("ededi daxil et");
+      const newEd = +prompt("ededi daxil et");
     default:
       throw new Error("YALNIS!");
   }
