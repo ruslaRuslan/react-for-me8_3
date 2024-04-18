@@ -33,6 +33,7 @@ const UsersWithReducer = ({}) => {
 
   return (
     <>
+    <button>add user</button>
       {state.map((user) => {
         return (
           <div key={user.id}>
