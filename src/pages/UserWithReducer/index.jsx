@@ -1,40 +1,44 @@
-import { useReducer } from "react";
+import axios from "axios";
+import { useEffect, useReducer } from "react";
 
-const reduser = (state, action) => {
-  if (action === "add_user") {
-    return state.concat(["ali", "idris"]);
-  } 
-  else if (action === "remove_user") {
-    return [];
+const url = "https://jsonplaceholder.typicode.com/users/";
+
+const usersReducer = (state, action) => {
+  if (action.type === "get_users") {
+    return action.payload
+  }else if(action.type === 'remove_user'){
+const newState = state.filter((user)=> user.id !== action.payload)
+return newState
   }
- 
 };
 
-const UserWithReducer = ({}) => {
-  const [state, dispatch] = useReducer(reduser, ["orxan"]);
-  return (
+const UsersWithReducer = ({}) => {
+  const [state, dispatch] = useReducer(usersReducer, []);
+
+  useEffect(() => {
+    axios.get(url).then(({ data }) => {
+      dispatch({ type: "get_users", payload: data });
+    });
+  }, []);
+
+  return(
+
     <>
-      <button
-        onClick={() => {
-          dispatch("add_user");
-        }}
-      >
-        add user
-      </button>
+    
+    {
+        
+        state.map((user)=>{
+return <div key={user.id}>
+<p>{user.username} <button onClick={()=>dispatch({type: "remove_user", payload: user.id})}>х</button> </p>
 
-      <button
-        onClick={() => {
-          dispatch("remove_user");
-        }}
-      >
-        remove user
-      </button>
-
-      {state.map((ad) => (
-        <p key={ad}>{ad}</p>
-      ))}
+</div>
+        })
+        
+    }
+    
     </>
-  );
+
+  )
 };
 
-export default UserWithReducer;
+export default UsersWithReducer;
