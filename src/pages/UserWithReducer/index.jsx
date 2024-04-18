@@ -37,6 +37,7 @@ const UsersWithReducer = ({}) => {
               >
                 х
               </button>{" "}
+              <button></button>
             </p>
           </div>
         );
