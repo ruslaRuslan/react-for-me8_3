@@ -1,6 +1,5 @@
 import axios from "axios";
 import { useEffect, useReducer } from "react";
-import {v4 as genId} from "uuid"
 const url = "https://jsonplaceholder.typicode.com/users/";
 
 
