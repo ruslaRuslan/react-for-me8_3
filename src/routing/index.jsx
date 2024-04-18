@@ -6,7 +6,7 @@ import ObjectPage from "../pages/ObjectPage";
 import GithubMain from "../pages/Github";
 import FollowersGithub from "../pages/Github/Followers";
 import UserWithReducer from "../pages/UserWithReducer";
-
+import CounterWithReducer from "../components/CounterWithReducer";
 
 const Routing = () => {
   return (
@@ -21,10 +21,12 @@ const Routing = () => {
           path="/github-followers/:username"
           element={<FollowersGithub />}
         />
-      <Route path="/users-with-reducer" element={<UserWithReducer />} />
+        <Route path="/users-with-reducer" element={<UserWithReducer />} />
+        <Route path="/counter-with-reducer" element={<CounterWithReducer />} />
+
       </Routes>
     </>
   );
 };
 
-export default Routing;
+export default Routing;    

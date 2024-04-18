@@ -1,9 +1,14 @@
-import React from 'react'
+import React, { useReducer } from "react";
+
+const counterReducer = (count, action) => {};
 
 const CounterWithReducer = () => {
+  const [count, dispatch] = useReducer(counterReducer, 0);
   return (
-    <div>CounterWithReducer</div>
-  )
-}
+    <>
+      <h1>{count}</h1>
+    </>
+  );
+};
 
-export default CounterWithReducer
+export default CounterWithReducer;
