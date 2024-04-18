@@ -33,7 +33,9 @@ const UsersWithReducer = ({}) => {
 
   return (
     <>
-    <button>add user</button>
+    <button onClick={()=>{
+      dispatch({type:'add_user'})
+    }}>add user</button>
       {state.map((user) => {
         return (
           <div key={user.id}>
