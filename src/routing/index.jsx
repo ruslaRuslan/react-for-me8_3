@@ -5,6 +5,7 @@ import Contact from "../pages/Contact/";
 import ObjectPage from "../pages/ObjectPage";
 import GithubMain from "../pages/Github";
 import FollowersGithub from "../pages/Github/Followers";
+import UserWithReducer from "../pages/UserWithReducer";
 
 const Routing = () => {
   return (
@@ -19,6 +20,7 @@ const Routing = () => {
           path="/github-followers/:username"
           element={<FollowersGithub />}
         />
+      <Route path="/users-with-reducer" element={<UserWithReducer />} />
       </Routes>
     </>
   );
