@@ -10,9 +10,9 @@ const usersReducer = (state, action) => {
     case "remove_user":
       return state.filter((user) => user.id !== action.payload);
     case "edit_user":
-      const newUsername = prompt("enter new user name:");
       return state.map((user) => {
         if (user.id === action.payload) {
+          const newUsername = prompt("enter new user name:", user.username);
           return { ...user, username: newUsername };
         }
         return user;
